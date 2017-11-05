@@ -1,9 +1,10 @@
 from gensim.models.keyedvectors import KeyedVectors
+import numpy as np
 
 w2v = KeyedVectors.load_word2vec_format("wiki.ru.vec")
 
 word_vecs = {}
-for word in tqdm(w2v.vocab):
+for word in w2v.vocab:
     if len(word.split()) == 1:
         vec = w2v[word]
         word_vecs[word] = vec
@@ -15,7 +16,7 @@ with open("wiki.ru.vec.txt", "wt") as outfile:
         outfile.write(wordvec + "\n")
 
 char_vecs = {}
-for word in tqdm(w2v.vocab):
+for word in w2v.vocab:
     vec = w2v[word]
     if len(word.split()) == 1:
         for char in word:
