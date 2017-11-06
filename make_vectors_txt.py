@@ -10,7 +10,7 @@ for word in w2v.vocab:
         word_vecs[word] = vec
 
 with open("wiki.ru.vec.txt", "wt") as outfile:
-    for word, vec in tqdm(word_vecs.items()):
+    for word, vec in word_vecs.items():
         vec = " ".join([str(i) for i in vec])
         wordvec = " ".join([word, vec])
         outfile.write(wordvec + "\n")
@@ -26,7 +26,7 @@ for word in w2v.vocab:
                 char_vecs[char] = (vec, 1)
 
 with open("wiki.ru.vec_char_emb.txt", "wt") as outfile:
-    for char, vec in tqdm(char_vecs.items()):
+    for char, vec in char_vecs.items():
         avg_vector = np.round((vec[0] / vec[1]), 6).tolist()
         avg_vector = " ".join([str(i) for i in avg_vector])
         charvec = " ".join([char, avg_vector])
